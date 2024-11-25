@@ -48,7 +48,7 @@ jobs:
     environment: dev
     steps:
       - name: deploy to dev
-        run: echo Deployed to dev ${{ needs.create-new-version.output.version }}
+        run: echo Deployed to dev ${{ needs.create-new-version.outputs.version }}
 
   deploy-to-ops:
     needs: ['create-new-version']  
