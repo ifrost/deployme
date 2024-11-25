@@ -33,6 +33,7 @@ jobs:
           git config --global user.email "botexample.com"
           git config --global user.name "Mr. Bot"
           VERSION=$(npm version ${{ inputs.version }})
+          echo "vars: $VERSION, $GITHUB_ENV"
           echo "VERSION=$VERSION" >> "$GITHUB_ENV"
 
       - name: push tag
@@ -45,7 +46,7 @@ jobs:
     environment: dev
     steps:
       - name: deploy to dev
-        run: echo Deployed to dev $VERSION
+        run: echo "Deployed to dev $VERSION"
 
   deploy-to-ops:
     needs: ['create-new-version']  
