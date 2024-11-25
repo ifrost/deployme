@@ -36,7 +36,7 @@ jobs:
           git config --global user.email "botexample.com"
           git config --global user.name "Mr. Bot"
           VERSION=$(npm version ${{ inputs.version }})
-          echo "version=$VERSION" >> "$GITHUB_OUTPUT"
+          echo "version=$VERSION" >> $GITHUB_OUTPUT
           echo "version: $VERSION" >> $GITHUB_STEP_SUMMARY
 
       - name: push tag
