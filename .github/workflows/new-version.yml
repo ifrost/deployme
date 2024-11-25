@@ -56,7 +56,7 @@ jobs:
     environment: ops
     steps:
       - name: deploy to ops
-        run: echo Deployed to ops $VERSION
+        run: echo Deployed to ops ${{ needs.create-new-version.outputs.version }}
 
   deploy-to-prod:
     needs: ['create-new-version']
@@ -64,6 +64,6 @@ jobs:
     environment: prod
     steps:
       - name: deploy to prod
-        run: echo Deployed to prod $VERSION
+        run: echo Deployed to prod ${{ needs.create-new-version.outputs.version }}
 
 
