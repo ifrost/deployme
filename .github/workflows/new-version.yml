@@ -34,5 +34,28 @@ jobs:
           git config --global user.name "Mr. Bot"
           npm version ${{ inputs.version }}
 
-      - name: Push
+      - name: push tag
         run: git push origin main --tags
+        
+  deploy-to-dev:
+    runs-on: ubuntu-latest
+    environment: dev
+    steps:
+      - name: deploy to dev
+        run: echo Deployed to dev
+
+  deploy-to-ops:
+    runs-on: ubuntu-latest
+    environment: ops
+    steps:
+      - name: deploy to ops
+        run: echo Deployed to ops
+
+  deploy-to-prod:
+    runs-on: ubuntu-latest
+    environment: prod
+    steps:
+      - name: deploy to prod
+        run: echo Deployed to prod
+
+
