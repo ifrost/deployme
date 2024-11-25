@@ -36,6 +36,10 @@ jobs:
 
       - name: push tag
         run: git push origin main --tags
+
+      - name: Set version var
+        id: vars
+        run: echo "tag=${GITHUB_REF#refs/*/}" >> $GITHUB_OUTPUT
         
   deploy-to-dev:
     needs: ['create-new-version']
@@ -43,7 +47,7 @@ jobs:
     environment: dev
     steps:
       - name: deploy to dev
-        run: echo Deployed to dev ${{ github.ref_name }}
+        run: echo Deployed to dev ${GITHUB_REF##*/}
 
   deploy-to-ops:
     needs: ['create-new-version']  
