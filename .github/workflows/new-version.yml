@@ -43,7 +43,7 @@ jobs:
     environment: dev
     steps:
       - name: deploy to dev
-        run: echo Deployed to dev
+        run: echo Deployed to dev ${{ github.ref_name }}
 
   deploy-to-ops:
     needs: ['create-new-version']  
@@ -51,7 +51,7 @@ jobs:
     environment: ops
     steps:
       - name: deploy to ops
-        run: echo Deployed to ops
+        run: echo Deployed to ops ${{ github.ref_name }}
 
   deploy-to-prod:
     needs: ['create-new-version']
@@ -59,6 +59,6 @@ jobs:
     environment: prod
     steps:
       - name: deploy to prod
-        run: echo Deployed to prod
+        run: echo Deployed to prod ${{ github.ref_name }}
 
 
