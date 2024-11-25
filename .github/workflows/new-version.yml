@@ -38,6 +38,7 @@ jobs:
         run: git push origin main --tags
         
   deploy-to-dev:
+    needs: ['create-new-version']
     runs-on: ubuntu-latest
     environment: dev
     steps:
@@ -45,6 +46,7 @@ jobs:
         run: echo Deployed to dev
 
   deploy-to-ops:
+    needs: ['create-new-version']  
     runs-on: ubuntu-latest
     environment: ops
     steps:
@@ -52,6 +54,7 @@ jobs:
         run: echo Deployed to ops
 
   deploy-to-prod:
+    needs: ['create-new-version']
     runs-on: ubuntu-latest
     environment: prod
     steps:
