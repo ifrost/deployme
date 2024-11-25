@@ -18,6 +18,8 @@ jobs:
     permissions:
         contents: write
     runs-on: ubuntu-latest
+    outputs:
+      version: ${{ steps.version-bump.outputs.version }}
     steps:
       - uses: actions/checkout@v4
         with:
@@ -29,24 +31,24 @@ jobs:
         run: yarn install --immutable
 
       - name: version bump
+        id: version-bump
         run: |
           git config --global user.email "botexample.com"
           git config --global user.name "Mr. Bot"
           VERSION=$(npm version ${{ inputs.version }})
-          echo "vars: $VERSION, $GITHUB_ENV"
-          echo "VERSION=$VERSION" >> "$GITHUB_ENV"
+          echo "version=$VERSION" >> "$GITHUB_OUTPUT"
+          echo "version: $VERSION" >> $GITHUB_STEP_SUMMARY
 
       - name: push tag
         run: git push origin main --tags
             
-        
   deploy-to-dev:
     needs: ['create-new-version']
     runs-on: ubuntu-latest
     environment: dev
     steps:
       - name: deploy to dev
-        run: echo "Deployed to dev $VERSION"
+        run: echo Deployed to dev ${{ needs.create-new-version.output.version }}
 
   deploy-to-ops:
     needs: ['create-new-version']  
