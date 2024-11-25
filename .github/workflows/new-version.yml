@@ -32,14 +32,12 @@ jobs:
         run: |
           git config --global user.email "botexample.com"
           git config --global user.name "Mr. Bot"
-          npm version ${{ inputs.version }}
+          VERSION=$(npm version ${{ inputs.version }})
+          echo "VERSION=$VERSION" >> "$GITHUB_ENV"
 
       - name: push tag
         run: git push origin main --tags
-
-      - name: Set version var
-        id: vars
-        run: echo "tag=${GITHUB_REF#refs/*/}" >> $GITHUB_OUTPUT
+            
         
   deploy-to-dev:
     needs: ['create-new-version']
@@ -47,7 +45,7 @@ jobs:
     environment: dev
     steps:
       - name: deploy to dev
-        run: echo Deployed to dev ${GITHUB_REF##*/}
+        run: echo Deployed to dev $VERSION
 
   deploy-to-ops:
     needs: ['create-new-version']  
@@ -55,7 +53,7 @@ jobs:
     environment: ops
     steps:
       - name: deploy to ops
-        run: echo Deployed to ops ${{ github.ref_name }}
+        run: echo Deployed to ops $VERSION
 
   deploy-to-prod:
     needs: ['create-new-version']
@@ -63,6 +61,6 @@ jobs:
     environment: prod
     steps:
       - name: deploy to prod
-        run: echo Deployed to prod ${{ github.ref_name }}
+        run: echo Deployed to prod $VERSION
 
 
