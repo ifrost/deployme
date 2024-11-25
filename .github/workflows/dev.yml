@@ -17,7 +17,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - name: Run a one-line script
+      - name: Deploy to dev
         run: |
           git_hash=$(git rev-parse --short "$GITHUB_SHA")
           echo Deployed to dev $git_hash
