@@ -28,6 +28,8 @@ jobs:
 
       - name: version bump
         run: |
+          git config --global user.email "botexample.com"
+          git config --global user.name "Mr. Bot"
           npm version ${{ inputs.version }}
 
       - name: Push
