@@ -44,7 +44,9 @@ jobs:
         run: git push origin main --tags
 
   release:
-    name: Create GH elease
+    name: Create GH release
+    permissions:
+        contents: write
     runs-on: ubuntu-latest
     needs: ['create-new-version']
     steps:
