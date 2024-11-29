@@ -46,6 +46,7 @@ jobs:
   release:
     name: Create GH elease
     runs-on: ubuntu-latest
+    needs: ['create-new-version']
     steps:
       - name: Create Release
         id: create_release
