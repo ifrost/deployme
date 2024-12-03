@@ -5,5 +5,5 @@ on:
 
 jobs:
   custom:
-    uses: ifrost/deployme/.github/workflows/base.yml@main
+    uses: ifrost/deployme/.github/workflows/base.yaml@main
     
