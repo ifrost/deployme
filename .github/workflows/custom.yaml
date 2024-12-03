@@ -1,0 +1,9 @@
+name: Custom
+
+on:
+  workflow_dispatch
+
+jobs:
+  custom:
+    uses: ifrost/deployme/.github/workflows/base.yml@main
+    
