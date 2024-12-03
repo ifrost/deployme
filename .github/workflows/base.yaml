@@ -1,0 +1,13 @@
+name: Base
+on:
+  workflow_call
+
+env:
+  FOO: "foo"
+
+jobs:
+  core:
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo foo = $FOO
+      
