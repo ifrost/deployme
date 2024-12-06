@@ -16,7 +16,10 @@ jobs:
       - uses: actions/checkout@v4
       - name: Test
         run: |
-          git_hash=$(git rev-parse --short "$GITHUB_SHA")
-          echo Hash: $git_hash, SHA: ${{ github.sha }}, PR SHA: ${{ github.event.pull_request.head.sha }}
+          sudo apt-get install jq
+          sha=${{ github.sha }}
+          hash=$(echo $sha | cut -c1-7)
+          version=$(cat package.json | jq -r .version)
+          echo v${{ version }}-${{ hash }}
 
           
