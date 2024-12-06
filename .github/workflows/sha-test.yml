@@ -1,0 +1,23 @@
+# This is a basic workflow to help you get started with Actions
+
+name: Sha
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Test
+        run: |
+          git_hash=$(git rev-parse --short "$GITHUB_SHA")
+          echo Hash: $git_hash, SHA: ${github.sha}, PR SHA: ${github.event.pull_request.head.sha}
+
+          
