@@ -4,11 +4,14 @@ on:
   push:
     branches:
       - main
-    tags:
-      - v*
+    # tags:
+    #   - v*
   pull_request:
     branches:
       - main
+  repository_dispatch:
+    types:
+      - tag-created
 
 jobs:
   config:
@@ -20,6 +23,7 @@ jobs:
       - name: Set trigger type and config
         id: config
         run: |
+          echo "${{ github.event_name }}"
           if [[ "${{ github.event_name }}" == "pull_request" ]]; then
             echo "trigger_type=pull_request" >> $GITHUB_ENV
             echo "trigger_type=pull_request"
