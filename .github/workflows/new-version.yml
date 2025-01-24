@@ -31,6 +31,13 @@ jobs:
       - name: install
         run: yarn install --immutable
 
+      - name: log
+        run: |
+          current_date=$(date +"%Y-%m-%d %H:%M:%S")
+          echo "The current date is: $current_date"
+          echo "$current_date\n" >> log.txt
+          git add . 
+          
       - name: version bump
         id: version-bump
         run: |
@@ -39,9 +46,28 @@ jobs:
           VERSION=$(npm version ${{ inputs.version }})
           echo "version=$VERSION" >> $GITHUB_OUTPUT
           echo "version: $VERSION" >> $GITHUB_STEP_SUMMARY
+          echo "version=$VERSION" >> version.txt
 
       - name: push tag
         run: git push origin main --tags
+
+  package:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ inputs.version }}
+      - run: |
+          mkdir dist
+          mv * dist
+          zip build-${{ inputs.version }}.zip dist -r
+          md5sum -b build-${{ inputs.version }}.zip | awk '{ print $1 }' > build-${{ inputs.version }}.zip.md5
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: build-package
+          path: '*.{zip,md5}'
+          retention-days: 1
 
   release:
     name: Create GH release
@@ -49,19 +75,26 @@ jobs:
         contents: write
     runs-on: ubuntu-latest
     needs: ['create-new-version']
-    steps:
+    steps:      
+      - name: Get artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: build-package
+          path: dist
       - name: Create Release
         id: create_release
-        uses: actions/create-release@v1
+        uses: softprops/action-gh-release@v2
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
+          generate_release_notes: true
           tag_name: ${{ needs.create-new-version.outputs.version }}
           release_name: Release ${{ needs.create-new-version.outputs.version }}
           body: |
             TBC
           draft: false
           prerelease: false
+          files: dist/*
             
   deploy-to-dev:
     needs: ['create-new-version']
