@@ -61,7 +61,8 @@ jobs:
           ref: ${{ needs.create-new-version.outputs.version }}
       - run: |
           mkdir dist
-          cp -r . dist/
+          cp log.txt dist
+          cp package.json dist
           zip build-${{ inputs.version }}.zip dist -r
           md5sum -b build-${{ inputs.version }}.zip | awk '{ print $1 }' > build-${{ inputs.version }}.zip.md5
       - uses: actions/upload-artifact@v4
