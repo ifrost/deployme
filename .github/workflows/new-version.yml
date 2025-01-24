@@ -37,7 +37,7 @@ jobs:
           git config --global user.name "Mr. Bot"
           current_date=$(date +"%Y-%m-%d %H:%M:%S")
           echo "The current date is: $current_date"
-          echo "$current_date\n" >> log.txt
+          echo "$current_date" >> log.txt
           git add . 
           git commit -m "update log"
           
@@ -58,7 +58,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4
         with:
-          ref: ${{ inputs.version }}
+          ref: ${{ needs.create-new-version.outputs.version }}
       - run: |
           mkdir dist
           mv * dist
