@@ -72,12 +72,11 @@ jobs:
           retention-days: 1
 
   release:
-    needs: [package]
+    needs: [package, 'create-new-version']
     name: Create GH release
     permissions:
         contents: write
     runs-on: ubuntu-latest
-    needs: ['create-new-version']
     steps:      
       - name: Get artifact
         uses: actions/download-artifact@v4
