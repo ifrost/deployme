@@ -33,16 +33,17 @@ jobs:
 
       - name: log
         run: |
+          git config --global user.email "botexample.com"
+          git config --global user.name "Mr. Bot"
           current_date=$(date +"%Y-%m-%d %H:%M:%S")
           echo "The current date is: $current_date"
           echo "$current_date\n" >> log.txt
           git add . 
+          git commit -m "update log"
           
       - name: version bump
         id: version-bump
         run: |
-          git config --global user.email "botexample.com"
-          git config --global user.name "Mr. Bot"
           VERSION=$(npm version ${{ inputs.version }})
           echo "version=$VERSION" >> $GITHUB_OUTPUT
           echo "version: $VERSION" >> $GITHUB_STEP_SUMMARY
@@ -52,6 +53,7 @@ jobs:
         run: git push origin main --tags
 
   package:
+    needs: [create-new-version]
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -70,6 +72,7 @@ jobs:
           retention-days: 1
 
   release:
+    needs: [package]
     name: Create GH release
     permissions:
         contents: write
