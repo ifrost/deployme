@@ -1,8 +1,8 @@
-name: Upload 
+name: Upload
 
 on:
   issue_comment:
-    types: [created]
+    types: [ created ]
 
 jobs:
   upload:
@@ -10,13 +10,11 @@ jobs:
     if: |
       github.event.issue.pull_request &&
       contains(github.event.comment.body, '/upload'
-
-  steps:
-  - name: Checkout Repository
-    uses: actions/checkout@v4
-    with: 
-      ref: ${{ github.event.pull_request.head.sha }}
-
-  - name: Echo Comment Content
-    run: echo "Triggered by comment: ${{ github.event.comment.body }}"
-
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.sha }}
+      - name: Echo Comment Content
+        run: |
+          echo "Triggered by: ${{ github.event.comment.body }}"
