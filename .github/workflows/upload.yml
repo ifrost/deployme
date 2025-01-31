@@ -9,7 +9,7 @@ jobs:
     runs-on: ubuntu-latest
     if: |
       github.event.issue.pull_request &&
-      contains(github.event.comment.body, '/upload'
+      contains(github.event.comment.body, '/upload')
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v4
