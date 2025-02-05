@@ -34,7 +34,7 @@ jobs:
           fetch-tags: true
 
       - name: install
-        run: yarn install --immutable
+        run: npm install --immutable
 
       - name: log
         run: |
@@ -52,7 +52,6 @@ jobs:
           VERSION=$(npm version ${{ inputs.version }})
           echo "version=$VERSION" >> $GITHUB_OUTPUT
           echo "version: $VERSION" >> $GITHUB_STEP_SUMMARY
-          echo "version=$VERSION" >> version.txt
 
       - name: push tag
         run: git push origin main --tags
