@@ -1,3 +1,52 @@
+## [1.3.6](https://github.com/ifrost/deployme/compare/v1.3.5...v1.3.6) (2025-02-05)
+
+
+
+## [1.3.5](https://github.com/ifrost/deployme/compare/v1.3.4...v1.3.5) (2025-02-05)
+
+
+### Features
+
+* adding permissions ([cfb693c](https://github.com/ifrost/deployme/commit/cfb693c76258d79e7c0ca3bdbdbd4315c92e7067))
+
+
+
+## [1.3.4](https://github.com/ifrost/deployme/compare/v1.3.3...v1.3.4) (2025-02-05)
+
+
+### Bug Fixes
+
+* a fix is here ([c012bc5](https://github.com/ifrost/deployme/commit/c012bc528f854130944d9c4d5418caab0eeda215))
+
+
+
+## [1.3.3](https://github.com/ifrost/deployme/compare/v1.3.2...v1.3.3) (2025-02-05)
+
+
+### Bug Fixes
+
+* a fix ([478fa4f](https://github.com/ifrost/deployme/commit/478fa4f7f6615ce3f5a56adf343876490cd6bb2e))
+
+
+
+## [1.3.2](https://github.com/ifrost/deployme/compare/v1.3.1...v1.3.2) (2025-02-05)
+
+
+### Bug Fixes
+
+* fix workflow ([2ba212a](https://github.com/ifrost/deployme/commit/2ba212ae9d850fc8b5916b23f02a40a2e3a9e6b4))
+
+
+
+## [1.3.1](https://github.com/ifrost/deployme/compare/v1.3.0...v1.3.1) (2025-02-05)
+
+
+### Features
+
+* new gh release ([41bdf41](https://github.com/ifrost/deployme/commit/41bdf4155292eea373ea3000d6767e6c47419826))
+
+
+
 # [1.3.0](https://github.com/ifrost/deployme/compare/v1.2.8...v1.3.0) (2025-02-03)
 
 
