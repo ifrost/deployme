@@ -79,6 +79,11 @@ jobs:
     needs: [create-new-version, package]
     runs-on: ubuntu-latest
     steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ needs.create-new-version.outputs.version }}
+          fetch-depth: 0
+          fetch-tags: true
       - name: Get artifact
         uses: actions/download-artifact@v4
         with:
