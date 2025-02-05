@@ -81,6 +81,7 @@ jobs:
           retention-days: 1
 
   create-github-release:
+    name: Create GitHub Release ${{ needs.create-new-version.outputs.version }}
     needs: [create-new-version, package]
     runs-on: ubuntu-latest
     permissions:
