@@ -49,7 +49,7 @@ jobs:
       - name: version bump
         id: version-bump
         run: |
-          npm version
+          npm version ${{ inputs.version }}
           VERSION=$(git describe --tags --abbrev=0)
           echo "version=$VERSION" >> $GITHUB_OUTPUT
           echo "version: $VERSION" >> $GITHUB_STEP_SUMMARY
