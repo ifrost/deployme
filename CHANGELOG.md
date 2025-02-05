@@ -1,3 +1,15 @@
+## [1.3.9](https://github.com/ifrost/deployme/compare/v1.3.8...v1.3.9) (2025-02-05)
+
+
+### Bug Fixes
+
+* change how version is generated ([feb3041](https://github.com/ifrost/deployme/commit/feb30414b9f91f8b860bf6d1531bb92a380999dc))
+* update changelog ([110af05](https://github.com/ifrost/deployme/commit/110af059ee252426035cf57e06163f919e90281b))
+* Update new-version.yml ([81a4343](https://github.com/ifrost/deployme/commit/81a4343f47fcb20c932e9df874e214d695ac9f13))
+* Update new-version.yml ([cf9b3c2](https://github.com/ifrost/deployme/commit/cf9b3c213c10b2de841360bfa84304b4edf04932))
+
+
+
 ## [1.3.7](https://github.com/ifrost/deployme/compare/v1.3.6...v1.3.7) (2025-02-05)
 
 
