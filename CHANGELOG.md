@@ -1,3 +1,17 @@
+## [1.3.7](https://github.com/ifrost/deployme/compare/v1.3.6...v1.3.7) (2025-02-05)
+
+
+### Bug Fixes
+
+* update readme ([7d90cd6](https://github.com/ifrost/deployme/commit/7d90cd651ced5cf90d1d2e90c00489cb4634af15))
+
+
+### Features
+
+* standard changelog ([db8c6ab](https://github.com/ifrost/deployme/commit/db8c6ab93f2a28ef57375f1a65d69bda84a234f4))
+
+
+
 ## [1.3.6](https://github.com/ifrost/deployme/compare/v1.3.5...v1.3.6) (2025-02-05)
 
 
