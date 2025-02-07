@@ -19,11 +19,6 @@ jobs:
           ref: ${{ inputs.tag }}
           fetch-depth: 0
           fetch-tags: true
-      - name: Get artifact
-        uses: actions/download-artifact@v4
-        with:
-          name: build-package
-          path: package
       - name: Get changelog
         run: awk '/^## / {s++} s == 1 {print}' CHANGELOG.md > release_notes.md
       - name: Create Github release
@@ -33,7 +28,6 @@ jobs:
         with:
           prerelease: false
           generate_release_notes: false
-          files: package/*
           tag_name: ${{ inputs.tag }}
           token: ${{ secrets.GITHUB_TOKEN }}
           body_path: release_notes.md
