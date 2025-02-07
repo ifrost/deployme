@@ -30,4 +30,4 @@ jobs:
           generate_release_notes: false
           tag_name: ${{ inputs.tag }}
           token: ${{ secrets.GITHUB_TOKEN }}
-          body_path: release_notes.md
+          body: TEST
