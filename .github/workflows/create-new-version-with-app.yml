@@ -42,16 +42,17 @@ jobs:
           app_id: ${{ secrets.APP_ID }}
           private_key: ${{ secrets.PRIVATE_KEY }}
 
-      - name: log
-        run: |
-          git config --global user.email "appbotexample.com"
-          git config --global user.name "Mr. App"
-          git config --global url.https://${{ steps.create_token.outputs.token }}@github.com/.insteadOf https://github.com/
+      # - name: log
+      #   run: |
+      #     git config --global user.email "appbotexample.com"
+      #     git config --global user.name "Mr. App"
+      #     git config --global url.https://${{ steps.create_token.outputs.token }}@github.com/.insteadOf https://github.com/
 
-          current_date=$(date +"%Y-%m-%d %H:%M:%S")
-          echo "The current date is: $current_date"
-          echo "$current_date" >> log.txt
-          git add . 
+      #     current_date=$(date +"%Y-%m-%d %H:%M:%S")
+      #     echo "The current date is: $current_date"
+      #     echo "$current_date" >> log.txt
+      #     git add . 
+      #     git commit -m "update-log"
           
       - name: version bump
         id: version-bump
