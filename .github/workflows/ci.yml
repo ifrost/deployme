@@ -22,7 +22,7 @@ jobs:
       - name: Set trigger type and config
         id: config
         run: |
-          echo "event: ${{ github.event_name }}, ref: ${{ github.ref }}, actor $${{ github.actor }}, tactor $${{ github.triggering_actor }}"
+          echo "event: ${{ github.event_name }}, ref: ${{ github.ref }}, actor ${{ github.actor }}, tactor ${{ github.triggering_actor }}"
           if [[ "${{ github.event_name }}" == "pull_request" ]]; then
             echo "trigger_type=pull_request" >> $GITHUB_ENV
             echo "trigger_type=pull_request"
