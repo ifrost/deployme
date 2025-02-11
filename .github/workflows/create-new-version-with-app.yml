@@ -50,11 +50,11 @@ jobs:
           git config --global user.email "1141172+Test deployme[bot]@users.noreply.github.com"
           git config --global url.https://${{ steps.create_token.outputs.token }}@github.com/.insteadOf https://github.com/
 
-      #     current_date=$(date +"%Y-%m-%d %H:%M:%S")
-      #     echo "The current date is: $current_date"
-      #     echo "$current_date" >> log.txt
-      #     git add . 
-      #     git commit -m "update-log"
+          current_date=$(date +"%Y-%m-%d %H:%M:%S")
+          echo "The current date is: $current_date"
+          echo "$current_date" >> log.txt
+          git add . 
+          git commit -m "update-log"
           
       - name: version bump
         id: version-bump
@@ -64,12 +64,9 @@ jobs:
           echo "version=$VERSION" >> $GITHUB_OUTPUT
           echo "version: $VERSION" >> $GITHUB_STEP_SUMMARY
 
-      - name: Push commit first
-        run: git push origin main
+      - name: Push changes
+        run: git push origin --tags
       
-      # - name: Push tag separately
-      #   run: git push origin --tags
-
   # package:
   #   needs: [create-new-version]
   #   runs-on: ubuntu-latest
