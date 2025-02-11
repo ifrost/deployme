@@ -79,7 +79,7 @@ jobs:
           cat log.txt
       - run: |
           mkdir dist
-          cp log.txt dist
+          cp FAILlog.txt dist
           cp package.json dist
           zip build-${{ needs.create-new-version.outputs.version }}.zip dist -r
           md5sum -b build-${{ needs.create-new-version.outputs.version }}.zip | awk '{ print $1 }' > build-${{ needs.create-new-version.outputs.version }}.zip.md5
