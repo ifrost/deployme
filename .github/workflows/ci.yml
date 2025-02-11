@@ -18,7 +18,8 @@ jobs:
     outputs:
       trigger_type: ${{ steps.config.outputs.trigger_type }}
       version: ${{ steps.config.outputs.version }}
-    steps:
+    steps:      
+      - uses: actions/checkout@v4
       - name: Get current commit SHA
         id: get_sha
         run: echo "commit_sha=$(git rev-parse HEAD)" >> $GITHUB_ENV
