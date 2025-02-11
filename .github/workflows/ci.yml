@@ -10,6 +10,7 @@ on:
 
 jobs:
   config:
+    if: github.ref != 'refs/tags/*'
     runs-on: ubuntu-latest
     outputs:
       trigger_type: ${{ steps.config.outputs.trigger_type }}
