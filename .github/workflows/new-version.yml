@@ -65,6 +65,8 @@ jobs:
         with:
           ref: ${{ needs.create-new-version.outputs.version }}
       - run: |
+          cat log.txt
+      - run: |
           mkdir dist
           cp log.txt dist
           cp package.json dist
