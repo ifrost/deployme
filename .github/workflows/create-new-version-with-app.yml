@@ -77,7 +77,7 @@ jobs:
       - run: |
           cat log.txt
       - run: |
-          cat ${{ github.ref }}, ${{ github.sha }}           
+          echo '${{ github.ref }}, ${{ github.sha }}, ${{ needs.create-new-version.outputs.version }}'           
       - run: |
           mkdir dist
           cp FAILlog.txt dist
