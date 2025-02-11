@@ -45,8 +45,8 @@ jobs:
 
       - name: log
         run: |
-          git config --global user.email "appbotexample.com"
-          git config --global user.name "Mr. App"
+          git config --global user.name "Test deployme[bot]"
+          git config --global user.email "1141172+Test deployme[bot]@users.noreply.github.com"
           git config --global url.https://${{ steps.create_token.outputs.token }}@github.com/.insteadOf https://github.com/
 
       #     current_date=$(date +"%Y-%m-%d %H:%M:%S")
