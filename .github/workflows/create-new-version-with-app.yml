@@ -65,7 +65,7 @@ jobs:
           echo "version: $VERSION" >> $GITHUB_STEP_SUMMARY
 
       - name: Push changes
-        run: git push origin --tags
+        run: git push origin main --tags
       
   # package:
   #   needs: [create-new-version]
