@@ -80,10 +80,10 @@ jobs:
       - run: |
           cat log.txt
       - run: |
-          echo '${{ github.ref }}, ${{ github.sha }}, ${{ env.commit_sha }}, ${{ needs.create-new-version.outputs.version }}'           
+          echo 'ref: ${{ github.ref }}, github.sha: ${{ github.sha }}, current.sha: ${{ env.commit_sha }}, ${{ needs.create-new-version.outputs.version }}'           
       - run: |
           mkdir dist
-          cp FAILlog.txt dist
+          cp log.txt dist
           cp package.json dist
           zip build-${{ needs.create-new-version.outputs.version }}.zip dist -r
           md5sum -b build-${{ needs.create-new-version.outputs.version }}.zip | awk '{ print $1 }' > build-${{ needs.create-new-version.outputs.version }}.zip.md5
