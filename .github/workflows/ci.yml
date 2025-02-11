@@ -26,6 +26,7 @@ jobs:
       - name: Set trigger type and config
         id: config
         run: |
+          echo "COMMIT: ${{ github.event.pull_request.head.sha || env.commit_sha }}"
           echo "commit_sha: ${{ env.commit_sha }}, event: ${{ github.event_name }}, ref: ${{ github.ref }}, actor ${{ github.actor }}, tactor ${{ github.triggering_actor }}"
           if [[ "${{ github.event_name }}" == "pull_request" ]]; then
             echo "trigger_type=pull_request" >> $GITHUB_ENV
