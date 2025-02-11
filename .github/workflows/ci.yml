@@ -19,10 +19,13 @@ jobs:
       trigger_type: ${{ steps.config.outputs.trigger_type }}
       version: ${{ steps.config.outputs.version }}
     steps:
+      - name: Get current commit SHA
+        id: get_sha
+        run: echo "commit_sha=$(git rev-parse HEAD)" >> $GITHUB_ENV
       - name: Set trigger type and config
         id: config
         run: |
-          echo "event: ${{ github.event_name }}, ref: ${{ github.ref }}, actor ${{ github.actor }}, tactor ${{ github.triggering_actor }}"
+          echo "commit_sha: ${{ env.commit_sha }}, event: ${{ github.event_name }}, ref: ${{ github.ref }}, actor ${{ github.actor }}, tactor ${{ github.triggering_actor }}"
           if [[ "${{ github.event_name }}" == "pull_request" ]]; then
             echo "trigger_type=pull_request" >> $GITHUB_ENV
             echo "trigger_type=pull_request"
