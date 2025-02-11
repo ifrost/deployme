@@ -52,7 +52,6 @@ jobs:
           echo "The current date is: $current_date"
           echo "$current_date" >> log.txt
           git add . 
-          git commit -m "update log"
           
       - name: version bump
         id: version-bump
