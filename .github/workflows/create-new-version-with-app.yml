@@ -39,6 +39,7 @@ jobs:
           ref: 'main'
           fetch-depth: 0
           fetch-tags: true
+          token: ${{ steps.create_token.outputs.token }}
 
       - name: install
         run: npm install --immutable
