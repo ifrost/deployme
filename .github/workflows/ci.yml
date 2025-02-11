@@ -10,7 +10,6 @@ on:
 
 jobs:
   config:
-    if: github.ref != 'refs/tags/*'
     runs-on: ubuntu-latest
     outputs:
       trigger_type: ${{ steps.config.outputs.trigger_type }}
@@ -19,7 +18,7 @@ jobs:
       - name: Set trigger type and config
         id: config
         run: |
-          echo "${{ github.event_name }}"
+          echo "event: ${{ github.event_name }}, ref: ${{ github.ref }}"
           if [[ "${{ github.event_name }}" == "pull_request" ]]; then
             echo "trigger_type=pull_request" >> $GITHUB_ENV
             echo "trigger_type=pull_request"
