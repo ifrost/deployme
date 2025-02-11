@@ -62,8 +62,11 @@ jobs:
           echo "version=$VERSION" >> $GITHUB_OUTPUT
           echo "version: $VERSION" >> $GITHUB_STEP_SUMMARY
 
-      - name: push tag
-        run: git push origin main --tags
+      - name: Push commit first
+        run: git push origin main
+      
+      - name: Push tag separately
+        run: git push origin --tags
 
   package:
     needs: [create-new-version]
