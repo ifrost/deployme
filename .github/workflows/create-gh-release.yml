@@ -1,4 +1,4 @@
-name: Create GH release
+name: 🔌 Create GH release
 
 on:
   workflow_dispatch:
