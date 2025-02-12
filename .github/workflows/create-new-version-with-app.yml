@@ -20,6 +20,12 @@ permissions:
   actions: write
 
 jobs:
+  debug:
+    name: Debug
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo "Actor ${{ github.actor }}, triggering actor ${{ github.triggering_actor }}"
+
   create-new-version:
     name: Update version
     permissions:
