@@ -23,11 +23,17 @@ permissions:
   actions: write
 
 jobs:
+
   debug:
     name: Debug
     runs-on: ubuntu-latest
     steps:
-      - run: echo "Actor ${{ github.actor }}, triggering actor ${{ github.triggering_actor }} ${{ inputs.random::7 }}"
+      - name: Truncate sha
+        id: truncate
+        env:
+          VERSION: ${{ inputs.version }}
+        run: echo "short_version=${VERSION::8}" >> "$GITHUB_OUTPUT"
+      - run: echo "Actor ${{ github.actor }}, triggering actor ${{ github.triggering_actor }} ${{ steps.truncate.output.random }}"
 
   create-new-version:
     name: Update version
