@@ -33,7 +33,7 @@ jobs:
         env:
           VERSION: ${{ inputs.version }}
         run: echo "short_version=${VERSION::8}" >> "$GITHUB_OUTPUT"
-      - run: echo "Actor ${{ github.actor }}, triggering actor ${{ github.triggering_actor }} ${{ steps.truncate.output.random }}"
+      - run: echo "Actor ${{ github.actor }}, triggering actor ${{ github.triggering_actor }} short ${{ steps.truncate.output.short_version }}"
 
   create-new-version:
     name: Update version
