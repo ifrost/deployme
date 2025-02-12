@@ -12,6 +12,12 @@ on:
       
 
 jobs:
+  debug:
+    name: Debug
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo "Actor ${{ github.actor }}, triggering actor ${{ github.triggering_actor }}"
+
   config:
     if: github.ref != 'refs/tags/*'
     runs-on: ubuntu-latest
