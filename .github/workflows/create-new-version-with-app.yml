@@ -31,7 +31,7 @@ jobs:
       - name: Truncate sha
         id: truncate
         env:
-          VERSION: ${{ inputs.version }}
+          VERSION: ${{ inputs.random }}
         run: echo "short_version=${VERSION::8}" >> "$GITHUB_OUTPUT"
       - run: echo "Actor ${{ github.actor }}, triggering actor ${{ github.triggering_actor }} short ${{ steps.truncate.outputs.short_version }}"
 
