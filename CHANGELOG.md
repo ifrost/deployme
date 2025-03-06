@@ -1,3 +1,7 @@
+## [2.1.9](https://github.com/ifrost/deployme/compare/v2.1.8...v2.1.9) (2025-03-06)
+
+
+
 ## [2.1.8](https://github.com/ifrost/deployme/compare/v2.1.7...v2.1.8) (2025-02-12)
 
 
