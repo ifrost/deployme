@@ -54,3 +54,9 @@ jobs:
             echo "Unknown trigger type"
             exit 1
           fi
+
+  deploy:
+    environment: dev
+    runs-on: ubuntu-latest
+    steps:     
+      - run: echo "test"
