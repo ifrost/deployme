@@ -1,0 +1,16 @@
+name: Labels
+
+on:
+  pull_request:
+    branches:
+      - main
+    types:
+      - labeled
+
+jobs:
+  deploy:
+    if: github.event.label.name == 'upload'
+    runs-on: ubuntu-latest
+    steps:     
+      - run: echo "deployed"        
+         
