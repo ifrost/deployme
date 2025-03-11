@@ -11,6 +11,7 @@ on:
       - main
     types:
       - opened
+      - reopened
       - synchronize
       - labeled 
       
