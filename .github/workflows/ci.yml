@@ -63,4 +63,4 @@ jobs:
     if: github.event.label.name == 'upload'
     runs-on: ubuntu-latest
     steps:     
-      - run: echo "test"
+      - run: echo "test 2"
