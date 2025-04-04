@@ -12,5 +12,5 @@ jobs:
     if: github.event.label.name == 'upload'
     runs-on: ubuntu-latest
     steps:     
-      - run: echo "deployed"        
+      - run: echo "executed ${github.event}"        
          
