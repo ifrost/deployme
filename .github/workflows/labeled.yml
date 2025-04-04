@@ -16,7 +16,7 @@ jobs:
   debug2:
     runs-on: ubuntu-latest
     steps:
-      - run: echo "Labels are ${{ github.event.pull_request.labels }}"
+      - run: echo "Labels are ${{ toJson(github.event.pull_request.labels) }}"
 
   deploy:
     if: github.event.label.name == 'upload'
