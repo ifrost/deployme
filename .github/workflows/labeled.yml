@@ -13,11 +13,6 @@ jobs:
     steps:     
       - run: echo "Label name is ${{ github.event.label.name }}"
 
-  debug2:
-    runs-on: ubuntu-latest
-    steps:
-      - run: echo "Labels are ${{ toJson(github.event.pull_request.labels) }}"
-
   deploy:
     if: github.event.label.name == 'upload'
     runs-on: ubuntu-latest
