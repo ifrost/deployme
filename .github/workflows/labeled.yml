@@ -8,9 +8,14 @@ on:
       - labeled
 
 jobs:
+  debug:
+    runs-on: ubuntu-latest
+    steps:     
+      - run: echo "executed $github.event.label.name"      
+
   deploy:
     if: github.event.label.name == 'upload'
     runs-on: ubuntu-latest
     steps:     
-      - run: echo "executed ${github.event}"        
+      - run: echo "executed"        
          
